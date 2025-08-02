@@ -1,0 +1,27 @@
+{{ form_start(form) }}
+
+<div class="titleRow">
+	{{ form_label(form.title, 'Titre du film', {'label_attr': {'class': 'titleLabel'}}) }}
+	{{ form_widget(form.title, {'attr': {'class': 'titleInput'}, 'label': ''})}}
+</div>
+
+<div class="categoryRow">
+
+	{{ form_label(form.category, 'Choisir une ou plusieurs catégorie(s) :', {'label_attr': {'class': 'categoryLabel'}}
+	)}}
+
+	<div>
+		{% for cat in form.category %}
+			<div class="categoryBox">
+				{{ form_label(cat) }}
+				{{ form_widget(cat, {'attr': {'class': 'catInput'}}) }}
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+
+
+<button class="btn">{{ button_label|default('Ajouter') }}</button>
+
+{{ form_end(form) }}

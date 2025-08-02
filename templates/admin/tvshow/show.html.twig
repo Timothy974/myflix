@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<div class="tvShow">
+
+		<div class="tvShowHeader">
+
+			<h1>{{tvshow.title}}</h1>
+         <div class="tvShowHeaderButton">    
+			<a href="{{ path('tv_show_edit', {'id': tvshow.id}) }}">Modifier</a>
+			<a href="{{ path('tvshow_list') }}">Retour</a>
+         </div>
+
+		</div>
+		<div class="tvShowCard">
+
+			<div class="tvShowDetails">
+
+
+				<img src="{{tvshow.poster}}" alt="affiche de {{tvshow.title}}">
+				<div class="synopsis">
+					<h2>Synopsis</h2>
+					<p>
+						{{tvshow.synopsis}}
+					</p>
+				</div>
+			</div>
+
+			<div class="seasonsCard">
+
+				<input type="radio" name="show" id="close" checked>
+				<label for="close" class="close">Fermer</i>
+			</label>
+
+			{% for season in seasons %}
+
+				<input type="radio" id="{{season.name}}" name="show">
+				<label for="{{season.name}}">
+					<h2>{{season.name}}</h2>
+				</label>
+
+				<div class="seasonDetails">
+
+
+					{% for episode in season.episodes %}
+						<div class="episodeDetails">
+
+							<h3>Episode
+								{{episode.episode_number}}
+								-
+								{{episode.name}}
+							</h3>
+							<span>
+								Avec :
+								{% for actorEpisode in episode.guest_stars %}
+									{{actorEpisode.name}},
+								{% endfor %}
+							</span>
+
+
+							<p>{{episode.overview}}</p>
+						</div>
+
+
+					{% endfor %}
+				</div>
+
+			{% endfor %}
+		</div>
+	</div>
+
+
+</div>
+{% endblock %}

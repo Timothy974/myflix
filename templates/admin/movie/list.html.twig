@@ -1,0 +1,51 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Liste des films
+{% endblock %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="tableList">
+		<table>
+			<thead>
+				<tr>
+					<th>Titre</th>
+					<th>Affiche</th>
+					<th>Categorie(s)</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for movie in movies %}
+
+					<tr>
+						<td>{{movie.title}}</td>
+						<td><img width="75px" src="{{movie.poster}}" alt=""></td>
+						<td>
+							<ul>
+								{% for categories in movie.category %}
+									<li>{{categories.name}}</li>
+								{% endfor %}
+				         </ul>
+						</td>
+                  <td>
+                     <a href=""><i class="fa-solid fa-eye"></i></a>
+							{% include "admin/movie/_delete_form.html.twig" %}
+                  </td>
+					</tr>
+
+	{% endfor %}
+			</tbody>
+		</tr>
+</tbody>
+</table>
+<div class="pagination">
+
+{{ knp_pagination_render(movies) }}
+</div>
+</div>
+{% endblock %}

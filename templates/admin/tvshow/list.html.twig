@@ -1,0 +1,51 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Liste des séries
+{% endblock %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="tableList">
+		<table>
+			<thead>
+				<tr>
+					<th>Titre</th>
+					<th>Affiche</th>
+					<th>Categorie(s)</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for tvshow in tvshows %}
+
+					<tr>
+						<td>{{tvshow.title}}</td>
+						<td><img width="75px" src="{{tvshow.poster}}" alt=""></td>
+						<td>
+							<ul>
+								{% for categories in tvshow.category %}
+									<li>{{categories.name}}</li>
+								{% endfor %}
+				         </ul>
+						</td>
+                  <td>
+                     <a href="{{path('tvshow_show', {'id': tvshow.id})}}"><i class="fa-solid fa-eye"></i></a>
+                     {% include "admin/tvshow/_delete_form.html.twig" %}
+                  </td>
+					</tr>
+
+	{% endfor %}
+			</tbody>
+		</tr>
+</tbody>
+</table>
+<div class="pagination">
+
+{{ knp_pagination_render(tvshows) }}
+</div>
+</div>
+{% endblock %}

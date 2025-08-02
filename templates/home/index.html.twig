@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur MyFlix
+{% endblock %}
+
+{% block body %}
+
+<div class="home">
+
+	<h1>Les dernières séries ajoutées</h1>
+
+	<div class="swiper mySwiper">
+		<div class="swiper-wrapper">
+
+			{% for tvShow in tvShows %}
+				<div class="swiper-slide" >
+					<a href="{{path('tv_show_show', {id: tvShow.id})}}"><img src="{{tvShow.poster}}" alt=""></a>
+				</div>
+			{% endfor %}
+
+		</div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>
+
+
+	<h1>Les dernier films ajoutés</h1>
+
+	<div class="swiper mySwiper">
+		<div class="swiper-wrapper">
+
+			{% for movie in movies %}
+				<div class="swiper-slide">
+					<a href="{{path('movie_show', {id: movie.id})}}"><img src="{{movie.poster}}" alt=""></a>
+				</div>
+			{% endfor %}
+
+		</div>
+		<div class="swiper-button-prev">
+		</div>
+		<div class="swiper-button-next"></div>
+	</div>
+</div>
+
+{% endblock %}

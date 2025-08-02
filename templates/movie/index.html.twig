@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Les films
+{% endblock %}
+
+{% block body %}
+<div class="indexList">
+
+	{% for category in categories %}
+	<div class="title">
+		<h1>{{category.name}}</h1>
+		<a href="{{ path('movie_by_category', {category: category.name}) }}">Tout voir</a>
+	</div>
+
+		<div class="swiper mySwiper">
+			<div class="swiper-wrapper">
+
+				{% for movie in movies %}
+					{% for movieCategory in movie.category %}
+						{% if movieCategory.name == category.name %}
+							<div class="swiper-slide">
+								<a href="{{path('movie_show', {id: movie.id})}}"><img src="{{movie.poster}}" alt=""></a>
+							</div>
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+
+			</div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+	{% endfor %}
+</div>
+
+
+{% endblock %}

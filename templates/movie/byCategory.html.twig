@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- {{app.request.get('category')|title}}
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="catTitle">{{app.request.get('category')|title}}</h1>
+	<div class="categoryList">
+
+
+		{% for movie in movies %}
+			<div class="catCard">
+				<a href="{{path('movie_show', {id: movie.id})}}"><img src="{{movie.poster}}" alt="affiche de la série"></a>
+			</div>
+		{% endfor %}
+
+	</div>
+
+
+{% endblock %}

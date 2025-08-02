@@ -1,0 +1,18 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}{{parent()}} - Ajouter un film
+{% endblock %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="form">
+
+		<h1>Ajouter un film</h1>
+
+		{{ include('admin/movie/_form.html.twig') }}
+
+
+		<a href="{{ path('movie_list') }}">Retour <i class="fa-solid fa-square-caret-left"></i></i></a>
+	</div>
+{% endblock %}

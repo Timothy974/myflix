@@ -1,0 +1,17 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Edit TvShow{% endblock %}
+
+{% block body %}
+{{parent()}}
+<div class="form">
+
+    <h1>Edit TvShow</h1>
+
+    {{ include('admin/tvshow/_form.html.twig', {'button_label': 'Update'}) }}
+
+    {# <a href="{{ path('tvshow_list') }}">back to list</a>
+
+    {{ include('admin/tvshow/_delete_form.html.twig') }} #}
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- {{app.request.get('category')|title}}
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="catTitle">{{app.request.get('category')|title}}</h1>
+	<div class="categoryList">
+
+		{% for tvShow in tvShows %}
+			<div class="catCard">
+				<a href="{{path('tv_show_show', {id: tvShow.id})}}"><img src="{{tvShow.poster}}" alt="affiche de la série"></a>
+			</div>
+		{% endfor %}
+
+	</div>
+
+
+{% endblock %}

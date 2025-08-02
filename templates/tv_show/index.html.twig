@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{parent()}} - Les séries
+{% endblock %}
+
+{% block body %}
+<div class="indexList">
+
+	{% for category in categories %}
+		<div class="title">
+		<h1>{{category.name}}</h1>
+		<a href="{{ path('tvshow_by_category', {category: category.name}) }}">Tout voir</a>
+	</div>
+
+		<div class="swiper mySwiper">
+			<div class="swiper-wrapper">
+
+				{% for tvShow in tvShows %}
+					{% for tvShowCategory in tvShow.category %}
+						{% if tvShowCategory.name == category.name %}
+							<div class="swiper-slide">
+								<a href="{{path('tv_show_show', {id: tvShow.id})}}"><img src="{{tvShow.poster}}" alt=""></a>
+							</div>
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+
+			</div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

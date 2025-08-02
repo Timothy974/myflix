@@ -1,0 +1,17 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}New TvShow{% endblock %}
+
+{% block body %}
+    {{parent()}}
+
+	<div class="form">
+
+		<h1>Ajouter une série</h1>
+
+		{{ include('admin/tvshow/_form.html.twig') }}
+
+
+		<a href="{{ path('tvshow_list') }}">Retour <i class="fa-solid fa-square-caret-left"></i></i></a>
+	</div>
+{% endblock %}
